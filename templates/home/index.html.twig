@@ -3,27 +3,20 @@
 {% block title %}Projets{% endblock %}
 
 {% block body %}
-<section class="projets">
-
-    {% for projet in projets %}
-
-    <article>
-        <h2>{{ projet.title }}</h2>
-        <div class="container">
-            <div class="row">
-                <div class="col-6">
+    <div class="row">
+        {% for projet in projets %}
+        <div class="col-lg-4 col-md-6">
+            <article>
+                <h2 class="my-4">{{ projet.title }}</h2>
                     <img src="{{projet.image}}" alt="">
-                    <p>{{ projet.description | raw}}</p>
-                    
-                    <a href={{projet.github}} target="blanck"><button type="button"
-                            class="btn btn-primary">GitHub</button></a>
-                    <a href={{projet.weblink}} target="blanck"><button type="button" class="btn btn-primary">Site
-                            Web</button></a>
-                    <a href={{ path('home_show', {'id': projet.id}) }} type="button" class="btn btn-primary">Lire la suite</a>
-                </div>
-            </div>
-        </div>
-    </article>
-    {%endfor%}
-</section>
+                        <a href={{projet.github}} target="blanck"><button type="button"
+                                class="btn btn-primary mr-2 mt-2">GitHub</button></a>
+                        <a href={{projet.weblink}} target="blanck"><button type="button" class="btn btn-primary mr-2 mt-2">Site
+                                Web</button></a>
+                        <a href={{ path('home_show', {'id': projet.id}) }} type="button" class="btn btn-primary mt-2">Lire la
+                            suite</a>
+                            </div>
+            </article>
+        {%endfor%}
+    </div>
 {% endblock %}

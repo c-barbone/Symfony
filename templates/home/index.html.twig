@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Projets{% endblock %}
+
+{% block body %}
+<section class="projets">
+
+    {% for projet in projets %}
+
+    <article>
+        <h2>{{ projet.title }}</h2>
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <img src="{{projet.image}}" alt="">
+                    <p>{{ projet.description | raw}}</p>
+                    
+                    <a href={{projet.github}} target="blanck"><button type="button"
+                            class="btn btn-primary">GitHub</button></a>
+                    <a href={{projet.weblink}} target="blanck"><button type="button" class="btn btn-primary">Site
+                            Web</button></a>
+                    <a href={{ path('home_show', {'id': projet.id}) }} type="button" class="btn btn-primary">Lire la suite</a>
+                </div>
+            </div>
+        </div>
+    </article>
+    {%endfor%}
+</section>
+{% endblock %}

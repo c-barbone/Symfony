@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme formProjet 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+{% if not app.user %}
+<h2>Vous devez être connecté pour créer modifier ou supprimer un article</h2>
+<a href="{{ path('security_login') }}" class="btn btn-primary">Connexion</a>
+{% else %}
+<h1>Création d'un projet</h1>
+
+{{ form_start(formProjet) }}
+
+{{ form_row(formProjet.title, {'attr': {'placeholder' : "Titre du projet"}}) }}
+{{ form_row(formProjet.description, {'attr': {'placeholder' : "Contenu du projet"}}) }}
+{{ form_row(formProjet.image, {'attr': {'placeholder' : "URL de l'image"}}) }}
+{{ form_row(formProjet.github, {'attr': {'placeholder' : "Github du projet"}}) }}
+{{ form_row(formProjet.weblink, {'attr': {'placeholder' : "Weblink du projet"}}) }}
+
+<button type="submit" class="btn btn-success">
+{% if editMode %}
+    Enregistrer les modifications
+{% else %}
+    Ajouter un projet
+{% endif %}
+</button>
+
+{{ form_end(formProjet) }}
+{% endif %}
+{% endblock %}

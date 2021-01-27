@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body%}
+<article>
+    {% if not app.user %}
+    <h2>{{projet.title}}</h2>
+    <div class="content">
+        <img src="{{projet.image}}" alt="">
+        {{projet.description | raw}}
+        {% else %}
+        <h2>{{projet.title}}</h2>
+    <div class="content">
+        <img src="{{projet.image}}" alt="">
+        {{projet.description | raw}}
+        <a href="{{ path('home_edit', {'id': projet.id})}}" class="btn btn-primary">Modifier</a>
+        <a href="{{ path('remove_project', {'id': projet.id})}}" class="btn btn-primary">Supprimer</a>
+        
+    </div>
+    </div>  
+</article>
+{% endif %}
+{% endblock %}
